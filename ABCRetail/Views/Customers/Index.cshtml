@@ -1,0 +1,22 @@
+﻿@model IReadOnlyList<ABCRetail.Models.CustomerEntity>
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Table: Customers (Partition ABC)</h2>
+<form asp-action="Seed5" method="post"><button type="submit">Seed 5 Customers</button></form>
+<p><a href="/Customers/Create">Create New</a></p>
+<table>
+	<thead><tr><th>First</th><th>Last</th><th>Email</th><th>Phone</th><th>RowKey</th></tr></thead>
+	<tbody>
+		@foreach (var c in Model)
+		{
+			<tr>
+				<td>@c.FirstName</td>
+				<td>@c.LastName</td>
+				<td>@c.Email</td>
+				<td>@c.Phone</td>
+				<td>@c.RowKey</td>
+			</tr>
+		}
+	</tbody>
+</table>

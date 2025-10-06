@@ -1,0 +1,32 @@
+﻿@model IReadOnlyList<ABCRetail.Models.BlobViewItem>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Blob Storage – Media (Local)</h2>
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+    @Html.AntiForgeryToken()
+</form>
+@if (Model.Count == 0)
+{
+    <p>No blobs yet.</p>
+}
+<table>
+    <thead><tr><th>Name</th><th>Size</th><th>Actions</th></tr></thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.Name</td>
+                <td>@b.Length</td>
+                <td>
+                    <form asp-action="Delete" method="post" style="display:inline">
+                        <input type="hidden" name="name" value="@b.Name" />
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

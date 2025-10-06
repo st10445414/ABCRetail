@@ -1,0 +1,30 @@
+﻿@{
+	Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>ABC Storage Demo</title>
+	<link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+	<header>
+		<h1>ABC – Azure Storage Demo</h1>
+		<nav>
+			<a href="/">Home</a>
+			<a href="/Customers">Table (Customers)</a>
+			<a href="/Blobs">Blob (Media)</a>
+			<a href="/Files">Files (Docs)</a>
+			<a href="/Queues">Queues (Transactions)</a>
+		</nav>
+	</header>
+	<main>
+		@RenderBody()
+	</main>
+	<footer>
+		<small></small>
+	</footer>
+</body>
+</html>

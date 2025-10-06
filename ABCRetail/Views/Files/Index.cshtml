@@ -1,0 +1,35 @@
+﻿@model IReadOnlyList<ABCRetail.Models.FileViewItem>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>File Share – Documents (Local)</h2>
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button type="submit">Upload</button>
+    @Html.AntiForgeryToken()
+</form>
+@if (Model.Count == 0)
+{
+    <p>No files yet.</p>
+}
+<table>
+    <thead><tr><th>Name</th><th>Is Dir</th><th>Actions</th></tr></thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.Name</td>
+                <td>@f.IsDirectory</td>
+                <td>
+                    @if (!f.IsDirectory)
+                    {
+                        <form asp-action="Delete" method="post" style="display:inline">
+                            <input type="hidden" name="name" value="@f.Name" />
+                            <button type="submit">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

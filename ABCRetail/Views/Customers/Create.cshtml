@@ -1,0 +1,13 @@
+﻿@model ABCRetail.Models.CustomerEntity
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Create Customer</h2>
+<form asp-action="Create" method="post">
+	<div><label>First Name</label><input asp-for="FirstName" /></div>
+	<div><label>Last Name</label><input asp-for="LastName" /></div>
+	<div><label>Email</label><input asp-for="Email" /></div>
+	<div><label>Phone</label><input asp-for="Phone" /></div>
+	<button type="submit">Save</button>
+	@Html.AntiForgeryToken()
+</form>
